@@ -42,18 +42,58 @@
   transition: color 0.25s ease, background-size 0.25s ease;
 }
 
+
+
+
+
+.sidebar-wrap.single-sidebar img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* CTA card ----------------------------------------------------------- */
+
 .sidebar-wrap.single-sidebar .elementor-element-452eb29 .elementor-widget-container {
-  padding: 40px 32px;
+  width: 100%;
+  max-width: 100%;
+  padding: clamp(28px, 6vw, 40px) clamp(22px, 6vw, 32px);
   border: 2px solid var(--sidebar-border);
   box-shadow: 4px 4px 0 0 var(--sidebar-shadow);
   background: #ffffff;
+  box-sizing: border-box;
 }
 
 .sidebar-wrap.single-sidebar .cta-wrap {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  align-items: stretch;
+  gap: clamp(20px, 3vw, 28px);
+  text-align: left;
+}
+
+.sidebar-wrap.single-sidebar .cta-featured,
+.sidebar-wrap.single-sidebar .cta-content,
+.sidebar-wrap.single-sidebar .cta-buttons {
+  width: 100%;
+  max-width: 100%;
+}
+
+.sidebar-wrap.single-sidebar .cta-featured {
+  flex-shrink: 0;
+  display: block;
+}
+
+.sidebar-wrap.single-sidebar .cta-featured img {
+  width: 100%;
+  height: auto;
+}
+
+.sidebar-wrap.single-sidebar .cta-content {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 3vw, 22px);
 }
 
 .sidebar-wrap.single-sidebar .cta-title {
@@ -71,14 +111,17 @@
 
 .sidebar-wrap.single-sidebar .cta-buttons {
   display: flex;
+  flex-wrap: wrap;
+  gap: clamp(10px, 2.5vw, 18px);
 }
 
 .sidebar-wrap.single-sidebar .cta-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 15px 40px;
-  font-size: 1.125rem;
+  width: 100%;
+  padding: clamp(12px, 3vw, 16px) clamp(30px, 8vw, 40px);
+  font-size: clamp(1rem, 0.9rem + 0.6vw, 1.125rem);
   font-weight: 700;
   border-radius: 0;
   background: var(--sidebar-accent);
@@ -92,6 +135,18 @@
   color: #ffffff;
   box-shadow: 5px 5px 0 0 var(--sidebar-border);
 }
+
+@media (min-width: 640px) {
+  .sidebar-wrap.single-sidebar .cta-buttons {
+    justify-content: flex-start;
+  }
+
+  .sidebar-wrap.single-sidebar .cta-btn {
+    width: auto;
+    min-width: clamp(180px, 32vw, 240px);
+  }
+}
+
 
 /* Section heading ---------------------------------------------------- */
 .sidebar-wrap.single-sidebar .elementor-element-6982730 .elementor-widget-container {

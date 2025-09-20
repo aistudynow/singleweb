@@ -1,3 +1,4 @@
+
 /*
  * Single article layout styling extracted from the Foxiz theme.
  * The rules are scoped to the `.s-ct` container so they mirror the
@@ -12,6 +13,17 @@
   font-weight: normal;
   font-style: normal;
 }
+
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+
 
 .s-ct {
   --g-color: #8224e3;
@@ -121,6 +133,7 @@
   padding-right: var(--grid-pad);
   padding-left: var(--grid-pad);
   gap: var(--grid-gap);
+  box-sizing: border-box;
 }
 
 .grid-container > * {
@@ -161,6 +174,93 @@
 :where(.s-ct *::after) {
   box-sizing: border-box;
 }
+
+
+
+
+
+
+
+/* ------------------------------------------------------------------
+   Mobile header quick access navigation
+   ------------------------------------------------------------------ */
+.header-mobile {
+  --mbnav-height: 48px;
+  --qview-height: 42px;
+  --nav-color-10: rgba(4, 16, 47, 0.12);
+}
+
+.header-mobile .mobile-qview {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  border-top: 1px solid var(--nav-color-10);
+  background-color: var(--mbnav-bg, transparent);
+  -webkit-overflow-scrolling: touch;
+}
+
+.header-mobile .mobile-qview::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.header-mobile .mobile-qview-inner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0;
+  min-width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header-mobile .mobile-qview-inner > li {
+  flex: 0 0 auto;
+}
+
+.header-mobile .mobile-qview a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: var(--qview-height);
+  padding: 0 clamp(14px, 4vw, 22px);
+  white-space: nowrap;
+  color: inherit;
+  text-decoration: none;
+}
+
+.header-mobile .mobile-qview a::before {
+  content: '';
+  position: absolute;
+  left: clamp(14px, 4vw, 22px);
+  right: clamp(14px, 4vw, 22px);
+  bottom: 0;
+  height: 3px;
+  border-radius: var(--round-3, 3px);
+  background: transparent;
+  transition: background 0.2s var(--timing, ease);
+}
+
+.header-mobile .mobile-qview a:hover::before,
+.header-mobile .mobile-qview a:focus-visible::before,
+.header-mobile .mobile-qview .current-menu-item > a::before,
+.header-mobile .mobile-qview .current-menu-ancestor > a::before {
+  background: var(--g-color);
+}
+
+.header-mobile .mobile-qview a:focus-visible {
+  outline: none;
+  color: var(--g-color);
+}
+
+
+
+
+
 
 :where(.s-ct *) {
   font: inherit;
@@ -316,7 +416,7 @@
   align-items: center;
   flex-flow: row nowrap;
   flex-shrink: 0;
-  white-space: nowrap;
+  white-space: normal;
   font-family: var(--meta-family);
   font-size: var(--meta-fsize);
   color: var(--meta-fcolor);
@@ -555,6 +655,7 @@
   text-decoration-color: var(--hyperlink-line-color);
   text-underline-offset: min(4px, 0.175em);
   transition: var(--effect, all 0.2s ease);
+  overflow-wrap: anywhere;
 }
 
 .s-ct .entry-content a:not(.p-url):not(button):not(.wp-block-button__link):not(.no-link):not(.h-link):hover {
@@ -631,6 +732,28 @@
   max-width: 100%;
   border: 0;
 }
+
+
+.s-ct vdo,
+.s-ct .vdo_video_unit {
+  display: block;
+  width: 100% !important;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.s-ct vdo > *,
+.s-ct .vdo_video_unit > * {
+  max-width: 100% !important;
+}
+
+.s-ct .vdo_video_unit iframe,
+.s-ct .vdo_video_unit video {
+  width: 100% !important;
+  height: auto;
+}
+
+
 
 .s-ct .wp-embed-responsive .wp-has-aspect-ratio .wp-block-embed__wrapper::before {
   content: '';
@@ -714,37 +837,7 @@
   margin-bottom: 0;
 }
 
-/* File blocks -------------------------------------------------------- */
-.s-ct .wp-block-file {
-  font-size: 0.8em;
-  margin-bottom: 1.5em;
-}
 
-.s-ct .wp-block-file a:not(.wp-block-file__button) {
-  text-decoration: none !important;
-}
-
-.s-ct .wp-block-file a:not(.wp-block-file__button)::before {
-  font-family: 'ruby-icon';
-  content: '\e944';
-  margin-right: 5px;
-}
-
-.s-ct .wp-block-file__button {
-  display: inline-block;
-  padding: 0.7em 1.5em;
-  font-family: var(--btn-family);
-  font-weight: var(--btn-fweight);
-  border-radius: 2em;
-  background: #32373c;
-  color: #ffffff;
-  text-decoration: none;
-  transition: var(--effect, all 0.2s ease);
-}
-
-.s-ct .wp-block-file__button:hover {
-  opacity: 0.85;
-}
 
 /* Ads / custom blocks ------------------------------------------------ */
 .s-ct .ad-wrap {
@@ -868,6 +961,23 @@
   .s-ct .single-right-meta:not(:first-child)::before {
     display: none;
   }
+
+.mobile-qview {
+    overflow-x: hidden;
+  }
+
+  .mobile-qview-inner {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 6px;
+  }
+
+  .mobile-qview a {
+    justify-content: center;
+    padding: 0 12px;
+  }
+
+
 }
 
 @keyframes spin-loader {
