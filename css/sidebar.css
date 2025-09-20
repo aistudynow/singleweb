@@ -42,15 +42,23 @@
 
 
 @media (min-width: 1025px) {
-    .sticky-last-w .elementor-section:last-child > *, .sticky-last-w .sidebar-inner {
-        height: 100%;
-    }
-}
-@media (min-width: 1025px) {
-    .grid-container .sidebar-inner {
-        padding-right: 0;
-        padding-left: var(--s-sidebar-padding, 0);
-    }
+  .grid-container .sidebar-inner {
+    padding-right: 0;
+    padding-left: var(--s-sidebar-padding, 0);
+  }
+
+  .sticky-last-w .sidebar-wrap.single-sidebar {
+    position: relative;
+  }
+
+  .sticky-last-w .sidebar-inner {
+    position: sticky;
+    top: calc(var(--nav-height, 60px) + 24px);
+    height: auto;
+    align-self: flex-start;
+    padding-bottom: 24px;
+    will-change: top;
+  }
 }
 
 @media (max-width: 767px) {
