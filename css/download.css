@@ -11,6 +11,7 @@
   gap: var(--download-gap, 0.75em);
   margin-bottom: var(--download-spacing, 1.5rem);
   font-size: var(--download-text-size, 0.95rem);
+  --btn-fweight: 700;
 }
 
 .wp-block-file > a:first-child {
@@ -49,13 +50,15 @@
   line-height: 1;
   font-family: var(--btn-family, inherit);
   font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1.05rem);
-  font-weight: var(--btn-fweight, 700);
-  letter-spacing: var(--btn-fspace, 0.08em);
-  text-transform: uppercase;
+  font-weight: var(--btn-fweight, 700) !important;
+  font-weight: 700 !important;
+  letter-spacing: var(--btn-fspace, normal);
+  text-transform: var(--btn-transform, none);
   border: 3px solid var(--btn-outline-color, var(--body-fcolor, #04102f));
   border-radius: var(--round-5, 6px);
   background: var(--btn-primary, var(--g-color, #8224e3));
-  color: var(--btn-accent, #fff);
+  color: var(--awhite, #fff) !important;
+  color: #fff !important;
   text-decoration: none;
   text-decoration-color: transparent;
   box-shadow:
@@ -69,7 +72,7 @@
 
 .wp-block-file .wp-block-file__button.wp-element-button:hover,
 .wp-block-file .wp-block-file__button.wp-element-button:focus-visible {
-  color: var(--btn-accent-h, #fff);
+  color: var(--awhite, #fff) !important;
   background: var(--btn-primary-h, var(--g-color, #6c4dff));
   text-decoration: none;
   box-shadow:
@@ -110,6 +113,7 @@
   gap: var(--download-gap, 0.75em);
   margin-bottom: var(--download-spacing, 1.5rem);
   font-size: var(--download-text-size, 0.95rem);
+  --btn-fweight: 700;
 }
 
 .s-ct .wp-block-file > a:first-child {
@@ -137,7 +141,8 @@
   margin-right: 5px;
 }
 
-.s-ct .wp-block-file__button {
+.s-ct .wp-block-file__button,
+.s-ct .wp-block-file__button:visited {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -146,13 +151,15 @@
   line-height: 1;
   font-family: var(--btn-family, inherit);
   font-size: clamp(0.9rem, 0.85rem + 0.2vw, 1.05rem);
-  font-weight: var(--btn-fweight, 700);
-  letter-spacing: var(--btn-fspace, 0.08em);
-  text-transform: uppercase;
+  font-weight: var(--btn-fweight, 700) !important;
+  font-weight: 700 !important;
+  letter-spacing: var(--btn-fspace, normal);
+  text-transform: var(--btn-transform, none);
   border: 3px solid var(--btn-outline-color, var(--body-fcolor, #04102f));
   border-radius: var(--round-5, 6px);
   background: var(--btn-primary, var(--g-color, #8224e3));
-  color: var(--btn-accent, #ffffff);
+  color: var(--awhite, #fff) !important;
+  color: #fff !important;
   text-decoration: none;
   text-decoration-color: transparent;
   box-shadow:
@@ -167,7 +174,7 @@
 .s-ct .wp-block-file__button:hover,
 .s-ct .wp-block-file__button:focus-visible {
   background: var(--btn-primary-h, var(--g-color, #6c4dff));
-  color: var(--btn-accent-h, #ffffff);
+  color: var(--awhite, #fff) !important;
   box-shadow:
     0 0 0 0 var(--btn-shadow-step, rgba(4, 16, 47, 0.75)),
     1px 1px 0 0 var(--btn-shadow-step, rgba(4, 16, 47, 0.75)),
