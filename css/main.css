@@ -230,74 +230,107 @@ input {
 
 /* Privacy banner ----------------------------------------------------- */
 .privacy-bar {
+  --rb-privacy-gap: clamp(12px, 3vw, 24px);
+  position: fixed;
+  inset: auto auto var(--rb-privacy-gap) var(--rb-privacy-gap);
+  max-width: min(26rem, calc(100vw - var(--rb-privacy-gap) * 2));
   display: none;
-  transition: opacity .2s var(--timing);
+  margin: 0;
+  padding: 0;
   opacity: 0;
+  pointer-events: none;
+  z-index: var(--rb-privacy-z, 2147483647);
+  transform: translateY(10px);
+  transition: opacity .2s ease, transform .2s ease;
+  font-size: .875rem;
+  line-height: 1.5;
+  color: var(--privacy-color, #fff);
 }
 
 .privacy-bar.activated {
   display: block;
   opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .privacy-bar.privacy-left {
-  position: fixed;
-  z-index: 9999;
-  bottom: 20px;
-  left: 20px;
-  width: 380px;
+  right: auto;
 }
 
 .privacy-inner {
-  font-size: var(--rem-mini);
   position: relative;
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 15px;
-  border-radius: var(--round-7);
-  background-color: var(--privacy-bg-color, var(--dark-accent, #191c20));
-  color: var(--privacy-color);
-  box-shadow: 0 4px 30px var(--shadow-12);
+  gap: .75rem;
+  padding: .75rem 1rem;
+  border-radius: var(--round-7, 12px);
+  background: var(--privacy-bg-color, rgba(15, 18, 23, 0.92));
+  box-shadow: 0 10px 24px rgba(15, 18, 23, 0.18);
 }
 
 .privacy-content {
   flex: 1 1 auto;
+  min-width: 0;
 }
 
 .privacy-inner a:not(.is-btn) {
-  font-weight: 700;
-  text-decoration: underline dotted;
+  color: currentColor;
+  font-weight: 600;
+  text-decoration: underline;
   text-decoration-thickness: 1px;
-  transition: var(--effect);
+  text-decoration-color: currentColor;
+  transition: color .2s ease;
 }
 
-.privacy-inner a:not(.is-btn):hover {
-  color: var(--g-color);
+.privacy-inner a:not(.is-btn):hover,
+.privacy-inner a:not(.is-btn):focus-visible {
+  color: var(--g-color, #77b7ff);
 }
 
 .privacy-dismiss-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 10px 20px;
-  border-radius: var(--round-5);
-  background: var(--btn-primary);
-  color: var(--btn-accent);
-  transition: var(--effect);
+  min-height: 2.25rem;
+  padding: 0 1.4rem;
+  border-radius: 999px;
+  border: 0;
+  background: var(--btn-primary, #f4b400);
+  color: var(--btn-accent, #191c20);
+  font-weight: 600;
+  transition: background .2s ease, transform .2s ease;
 }
 
 .privacy-dismiss-btn:hover,
-.privacy-dismiss-btn:focus {
-  background: var(--btn-primary-h);
+.privacy-dismiss-btn:focus-visible {
+  background: var(--btn-primary-h, #d89a00);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .privacy-bar {
+    inset: auto var(--rb-privacy-gap) var(--rb-privacy-gap) var(--rb-privacy-gap);
+    max-width: calc(100vw - var(--rb-privacy-gap) * 2);
+  }
+
+  .privacy-inner {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: .65rem;
+  }
+
+  .privacy-dismiss-btn {
+    width: 100%;
+  }
 }
 
 /* Desktop header ----------------------------------------------------- */
 .header-wrap {
   position: relative;
   display: block;
-  z-index: 1;
+  z-index: auto;
 }
 
 .navbar-outer {

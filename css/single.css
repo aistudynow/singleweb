@@ -300,11 +300,7 @@ body {
 
 
 
-@media (min-width: 1025px) {
-    .sticky-last-w .elementor-section:last-child > *, .sticky-last-w .sidebar-inner {
-        height: 100%;
-    }
-}
+
 
 @media (min-width: 1025px) {
     .grid-container .sidebar-inner {
