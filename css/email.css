@@ -229,6 +229,15 @@
     align-items: stretch;
   }
 
+
+.gb-wrap.gb-download input[type='email'] {
+    flex: 0 1 auto;
+    width: 100%;
+    min-height: clamp(44px, 12vw, 56px);
+  }
+
+
+
   .gb-wrap.gb-download input[type='submit'] {
     width: 100%;
   }
