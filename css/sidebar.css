@@ -22,15 +22,14 @@
 
 
 .cta-buttons {
-    position: relative;
-    z-index: 5;
-    display: flex
-;
-    align-items: center;
-    flex-flow: row wrap;
-    width: 100%;
-    padding-top: var(--cta-btn-space, 20px);
-    gap: var(--cta-btn-gap, 5px);
+  position: relative;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  flex-flow: row wrap;
+  width: 100%;
+  padding-top: var(--cta-btn-space, 20px);
+  gap: var(--cta-btn-gap, 5px);
 }
 
 .elementor-3307 .elementor-element.elementor-element-452eb29 .cta-btn-2 {
@@ -41,7 +40,12 @@
 
 
 
+/* Sticky sidebar functionality ------------------------------------ */
 @media (min-width: 1025px) {
+  .sticky-last-w {
+    --sidebar-sticky-offset: calc(var(--nav-height, 60px) + 12px);
+  }
+
   .grid-container .sidebar-inner {
     padding-right: 0;
     padding-left: var(--s-sidebar-padding, 0);
@@ -52,12 +56,20 @@
   }
 
   .sticky-last-w .sidebar-inner {
+    height: 100%;
+  }
+
+  .sticky-last-w .sidebar-inner > *:last-child:not([data-elementor-type='wp-post']:first-child),
+  .sticky-last-w .sidebar-inner > #custom_html-2 {
     position: sticky;
-    top: calc(var(--nav-height, 60px) + 24px);
-    height: auto;
-    align-self: flex-start;
-    padding-bottom: 24px;
+    top: var(--sidebar-sticky-offset, calc(var(--nav-height, 60px) + 12px));
+    padding-bottom: 12px;
+    transition: all 0.3s ease;
     will-change: top;
+  }
+
+  .sticky-last-w .elementor-section:last-child > * {
+    height: 100%;
   }
 }
 
@@ -107,50 +119,7 @@
   align-items: stretch;
   gap: clamp(20px, 3vw, 28px);
 
-/* Sticky sidebar functionality */
-@media (min-width: 1025px) {
-  .sticky-last-w .sidebar-wrap.single-sidebar {
-    position: relative;
-  }
 
-  .sticky-last-w .sidebar-inner {
-    position: sticky;
-    top: calc(var(--nav-height, 60px) + 24px);
-    height: auto;
-    align-self: flex-start;
-    padding-bottom: 24px;
-    will-change: top;
-  }
-
-  .sticky-last-w .sidebar-inner > *:last-child:not([data-elementor-type='wp-post']:first-child) {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 12px;
-    padding-bottom: 12px;
-    -webkit-transition: all .3s ease;
-    transition: all .3s ease;
-    will-change: top;
-  }
-
-  .sticky-last-w .elementor-section:last-child > *,
-  .sticky-last-w .sidebar-inner {
-    height: 100%;
-  }
-  .sticky-last-w .sidebar-inner > *:last-child:not([data-elementor-type='wp-post']:first-child) {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 12px;
-    padding-bottom: 12px;
-    -webkit-transition: all .3s ease;
-    transition: all .3s ease;
-    will-change: top;
-  }
-
-  .sticky-last-w .elementor-section:last-child > *,
-  .sticky-last-w .sidebar-inner {
-    height: 100%;
-  }
-}
   text-align: left;
 }
 
