@@ -374,12 +374,19 @@ input {
   max-width: 100%;
 }
 
+.header-3 .navbar-wrap .navbar-right {
+    flex-grow: 0;
+}
+
+
 .navbar-left,
 .navbar-right,
 .navbar-center {
   display: flex;
   align-items: stretch;
   flex-flow: row nowrap;
+  position: relative;
+  flex-shrink: 0;
 }
 
 .navbar-left {
@@ -539,7 +546,15 @@ input {
   background: var(--subnav-bg-h, var(--flex-gray-7));
 }
 
+
+
+
 /* Utility icons ------------------------------------------------------ */
+
+
+
+
+
 .wnav-holder {
   padding: 0 5px;
   position: relative;
@@ -1308,36 +1323,22 @@ input {
   color: var(--subnav-color, currentColor);
 }
 
+
+
+
+
 /* Sticky sidebar functionality */
 @media (min-width: 1025px) {
-  .sticky-last-w .sidebar-wrap.single-sidebar {
-    position: relative;
-  }
+  .sticky-last-w {
+    --sidebar-sticky-offset: calc(var(--nav-height, 60px) + 12px);
 
-  .sticky-last-w .sidebar-inner {
-    position: sticky;
-    top: calc(var(--nav-height, 60px) + 24px);
-    height: auto;
-    align-self: flex-start;
-    padding-bottom: 24px;
-    will-change: top;
-  }
-
-  .sticky-last-w .sidebar-inner > *:last-child:not([data-elementor-type='wp-post']:first-child) {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 12px;
-    padding-bottom: 12px;
-    -webkit-transition: all .3s ease;
-    transition: all .3s ease;
-    will-change: top;
-  }
-
-  .sticky-last-w .elementor-section:last-child > *,
-  .sticky-last-w .sidebar-inner {
-    height: 100%;
-  }
 }
+}
+
+
+
+
+
 
 /* Animations --------------------------------------------------------- */
 @keyframes heartbeat {
